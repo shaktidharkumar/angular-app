@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="row">
+        <div class="col" *ngIf="searchedMovieDetails">
+            <div class="card border-dark text-bg-light text-center mb-3 mt-3">
+                <div class="row g-0">
+                    <div class="col-md-4" *ngIf="movieImage">
+                        <img [src]="movieImage" class="card-img-top img-fluid rounded-start" loading="lazy"
+                            [alt]="movieTitle | uppercase">
+                    </div>
+                    <div class="col">
+                        <h2 class="card-header" *ngIf="movieTitle">
+                            <strong><em>{{ movieTitle }}</em></strong>
+                        </h2>
+                        <div class="card-body">
+                            <h5 class="card-title" *ngIf="moviePlot"><em>{{ moviePlot }}</em></h5>
+                            <p *ngIf="movieRunningTime" class="card-text"><strong>Running Time:- </strong>{{
+                                movieRunningTime/60
+                                }} mins</p>
+                            <p class="card-text" *ngIf="movieActors"><strong>Casts:-</strong> <span
+                                    *ngFor="let actor of movieActors"> {{
+                                    actor }},
+                                </span></p>
+                            <p class="card-text" *ngIf="movieYear"><strong>Movie Year:-</strong> {{ movieYear }}</p>
+                            <p class="card-text" *ngIf="movieReleaseDate"><strong>Release Date:-</strong> {{
+                                movieReleaseDate | date:'full' }}
+                            </p>
+                            <p class="card-text" *ngIf="movieDirectors"><strong>Directors:-</strong></p>
+                            <div *ngIf="movieDirectors">
+                                <ul class="list-group list-group-flush" *ngFor="let director of movieDirectors">
+                                    <li class="list-group-item">{{ director }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="card-text" *ngIf="movieGenres"><strong>Genres:-</strong> <span class="text-muted"
+                                *ngFor="let genres of movieGenres"> {{ genres }}, </span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

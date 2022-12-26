@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="mb-3">
+                <label for="searchMovie" class="form-label">Search Movie Name</label>
+                <input type="search" class="form-control" id="searchMovie" placeholder="Movie Name"
+                    [(ngModel)]="movieSearchBox">
+            </div>
+            <div class="list-group">
+                <a *ngFor="let movie of movieList | searchMovie:movieSearchBox"
+                    routerLink="/movie-detail/{{ movie.info.rank }}" target="_blank"
+                    class="list-group-item list-group-item-action list-group-item-info">{{ movie.title }}</a>
+            </div>
+        </div>
+    </div>
+</div>

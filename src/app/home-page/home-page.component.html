@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <button type="button" class="btn btn-outline-primary mt-5" routerLink="/movie-list"
+                routerLinkActive="active">Search Movie</button>
+        </div>
+    </div>
+    <div class="row row-cols-1 row-cols-md-4 g-4 mt-5 mb-5">
+        <div class="col" *ngFor="let movie of movieList.slice(0,4)">
+            <div class="card border-info h-100">
+                <img [src]="movie.info.image_url" *ngIf="movie.info.image_url" class="card-img-top" loading="lazy"
+                    [alt]="movie.title | uppercase">
+                <div class="card-body">
+                    <h5 class="card-title" *ngIf="movie.title"><strong><em>{{ movie.title }}</em></strong></h5>
+                    <p class="card-text" *ngIf="movie.info.plot">{{ movie.info.plot }}</p>
+                    <p class="card-text" *ngIf="movie.year"><strong>Movie Year:-</strong> {{ movie.year }}</p>
+                    <p class="card-text" *ngIf="movie.info.release_date"><strong>Release Date:-</strong> {{
+                        movie.info.release_date |
+                        date:'full' }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
